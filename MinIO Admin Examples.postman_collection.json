@@ -336,7 +336,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{endpoint}}?action=setPolicy&accessKey=dominick&policy=userbucketsonly",
+					"raw": "{{endpoint}}?action=setPolicy&accessKey=jcarlson&policy=standarduser",
 					"host": [
 						"{{endpoint}}"
 					],
@@ -347,11 +347,11 @@
 						},
 						{
 							"key": "accessKey",
-							"value": "dominick"
+							"value": "jcarlson"
 						},
 						{
 							"key": "policy",
-							"value": "userbucketsonly"
+							"value": "standarduser"
 						}
 					]
 				}
@@ -496,7 +496,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{endpoint}}?action=addPolicy&path=/tmp/userbucketsonly.json",
+					"raw": "{{endpoint}}?action=addPolicy&path=/tmp/standarduser.json",
 					"host": [
 						"{{endpoint}}"
 					],
@@ -507,7 +507,7 @@
 						},
 						{
 							"key": "path",
-							"value": "/tmp/userbucketsonly.json"
+							"value": "/tmp/standarduser.json"
 						}
 					]
 				}
@@ -548,7 +548,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{endpoint}}?action=removePolicy&policy=userbucketsonly",
+					"raw": "{{endpoint}}?action=removePolicy&policy=standarduser",
 					"host": [
 						"{{endpoint}}"
 					],
@@ -559,7 +559,7 @@
 						},
 						{
 							"key": "policy",
-							"value": "userbucketsonly"
+							"value": "standarduser"
 						}
 					]
 				}
