@@ -85,6 +85,24 @@ else {
 			case "listPolicies":
 				$mcAdmin->listPolicies();	//lists the policies in this minio
 				break;
+			case "addPolicy":
+				if (isset($_GET['path'])) {
+					$mcAdmin->addPolicy($_GET['path']);	//add new policy from file
+				}
+				else {
+					header('HTTP/1.0 403 Bad Request');
+					echo "wrong parameters";
+				}
+				break;
+			case "removePolicy":
+				if (isset($_GET['policy'])) {
+					$mcAdmin->removePolicy($_GET['policy']);	//add new policy from file
+				}
+				else {
+					header('HTTP/1.0 403 Bad Request');
+					echo "wrong parameters";
+				}
+				break;
 			default:
 				header('HTTP/1.0 403 Bad Request');
 				echo "wrong parameters";

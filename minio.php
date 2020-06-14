@@ -173,6 +173,41 @@ class MinIO {
 		$output = shell_exec("../minio/mc admin policy list {$this->alias}/ --json 2>&1");
 		echo $output;
 	} 
+	
+	/**
+	* Name: Add Policy
+	* Desc: Adds a new policy to MinIO alias from JSON file
+	* 
+	* Inputs: policyFile (local path)
+	* Given: alias
+	* Outputs: Status message
+	*/
+
+	function addPolicy($policyFile)
+	{ 
+		// Example: ../minio/mc admin policy add myminio/ userbucketsonly /tmp/userbucketsonly.json
+		$filename = basename($policyFile);         // $file is set to "index.json"
+		$policyName = basename($filename, ".json"); // $file is set to "index"
+
+		$output = shell_exec("../minio/mc admin policy add {$this->alias}/ {$policyName} {$policyFile} 2>&1");
+		echo $output;
+	}
+	
+	/**
+	* Name: Remove Policy
+	* Desc: Removes policy from MinIO alias
+	* 
+	* Inputs: policyName
+	* Given: alias
+	* Outputs: Status message
+	*/
+
+	function removePolicy($policyName)
+	{ 
+		// Example:  ../minio/mc admin policy remove myminio/ userbucketsonly
+		$output = shell_exec("../minio/mc admin policy remove {$this->alias}/ {$policyName} 2>&1");
+		echo $output;
+	}
 
 }
 
