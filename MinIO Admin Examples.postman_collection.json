@@ -336,7 +336,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{endpoint}}?action=setPolicy&accessKey=jcarlson&policy=readwrite",
+					"raw": "{{endpoint}}?action=setPolicy&accessKey=dominick&policy=userbucketsonly",
 					"host": [
 						"{{endpoint}}"
 					],
@@ -347,11 +347,11 @@
 						},
 						{
 							"key": "accessKey",
-							"value": "jcarlson"
+							"value": "dominick"
 						},
 						{
 							"key": "policy",
-							"value": "readwrite"
+							"value": "userbucketsonly"
 						}
 					]
 				}
@@ -456,6 +456,110 @@
 						{
 							"key": "accessKey",
 							"value": "jcarlson"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Policy",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "aeb020ea-2ee3-4b1f-948a-83de17c77348",
+						"exec": [
+							"// Get the action from request parameter (must match what is in params)\r",
+							"var action = \"addPolicy\";\r",
+							"\r",
+							"// Access your env variable to get secret\r",
+							"var secret = pm.environment.get(\"secret\");\r",
+							"\r",
+							"// Use the CryptoJS to calculate MD5\r",
+							"var hash = CryptoJS.MD5(secret + action).toString();\r",
+							"\r",
+							"// Set the new environment variable\r",
+							"pm.environment.set(\"authorization\", hash);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{endpoint}}?action=addPolicy&path=/tmp/userbucketsonly.json",
+					"host": [
+						"{{endpoint}}"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "addPolicy"
+						},
+						{
+							"key": "path",
+							"value": "/tmp/userbucketsonly.json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Policy",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "aeb020ea-2ee3-4b1f-948a-83de17c77348",
+						"exec": [
+							"// Get the action from request parameter (must match what is in params)\r",
+							"var action = \"removePolicy\";\r",
+							"\r",
+							"// Access your env variable to get secret\r",
+							"var secret = pm.environment.get(\"secret\");\r",
+							"\r",
+							"// Use the CryptoJS to calculate MD5\r",
+							"var hash = CryptoJS.MD5(secret + action).toString();\r",
+							"\r",
+							"// Set the new environment variable\r",
+							"pm.environment.set(\"authorization\", hash);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{endpoint}}?action=removePolicy&policy=userbucketsonly",
+					"host": [
+						"{{endpoint}}"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "removePolicy"
+						},
+						{
+							"key": "policy",
+							"value": "userbucketsonly"
 						}
 					]
 				}
