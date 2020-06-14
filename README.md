@@ -38,6 +38,8 @@ You must fill out **endpoint** with the public URL that points to where you uplo
 
 You can leave **authorization** blank as that will be filled out by Postman later on.
 
+You can take a look at the [Postman collection online](https://documenter.getpostman.com/view/1747463/SzzheJEs?version=latest), but I highly recommend importing the  collection JSON since it contains the script to generate authorization.
+
 ## PHP Usage ##
 
 If you just want to interact with the functions in PHP instead of using the REST API, just put in your PHP code `include("minio.php")` and thats it! You can now instantiate the class and start calling the functions.
