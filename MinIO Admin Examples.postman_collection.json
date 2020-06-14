@@ -1,0 +1,467 @@
+{
+	"info": {
+		"_postman_id": "7ee875e1-89ae-44f1-902f-5e51f5c2fa7f",
+		"name": "MinIO Admin Examples",
+		"description": "These are examples for a MinIO REST API example implementation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add User",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "306db58c-7d56-4005-b7e8-b6f73ea0e497",
+						"exec": [
+							"// Get the action from request parameter (must match what is in params)\r",
+							"var action = \"addUser\";\r",
+							"\r",
+							"// Access your env variable to get secret\r",
+							"var secret = pm.environment.get(\"secret\");\r",
+							"\r",
+							"// Use the CryptoJS to calculate MD5\r",
+							"var hash = CryptoJS.MD5(secret + action).toString();\r",
+							"\r",
+							"// Set the new environment variable\r",
+							"pm.environment.set(\"authorization\", hash);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{endpoint}}?action=addUser&accessKey=jcarlson&secret=password321",
+					"host": [
+						"{{endpoint}}"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "addUser"
+						},
+						{
+							"key": "accessKey",
+							"value": "jcarlson"
+						},
+						{
+							"key": "secret",
+							"value": "password321"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Users",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "aeb020ea-2ee3-4b1f-948a-83de17c77348",
+						"exec": [
+							"// Get the action from request parameter (must match what is in params)\r",
+							"var action = \"listUsers\";\r",
+							"\r",
+							"// Access your env variable to get secret\r",
+							"var secret = pm.environment.get(\"secret\");\r",
+							"\r",
+							"// Use the CryptoJS to calculate MD5\r",
+							"var hash = CryptoJS.MD5(secret + action).toString();\r",
+							"\r",
+							"// Set the new environment variable\r",
+							"pm.environment.set(\"authorization\", hash);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{endpoint}}?action=listUsers",
+					"host": [
+						"{{endpoint}}"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "listUsers"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Server Info",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "aeb020ea-2ee3-4b1f-948a-83de17c77348",
+						"exec": [
+							"// Get the action from request parameter (must match what is in params)\r",
+							"var action = \"getServerInfo\";\r",
+							"\r",
+							"// Access your env variable to get secret\r",
+							"var secret = pm.environment.get(\"secret\");\r",
+							"\r",
+							"// Use the CryptoJS to calculate MD5\r",
+							"var hash = CryptoJS.MD5(secret + action).toString();\r",
+							"\r",
+							"// Set the new environment variable\r",
+							"pm.environment.set(\"authorization\", hash);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{endpoint}}?action=getServerInfo",
+					"host": [
+						"{{endpoint}}"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "getServerInfo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stop Server",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "aeb020ea-2ee3-4b1f-948a-83de17c77348",
+						"exec": [
+							"// Get the action from request parameter (must match what is in params)\r",
+							"var action = \"stopServer\";\r",
+							"\r",
+							"// Access your env variable to get secret\r",
+							"var secret = pm.environment.get(\"secret\");\r",
+							"\r",
+							"// Use the CryptoJS to calculate MD5\r",
+							"var hash = CryptoJS.MD5(secret + action).toString();\r",
+							"\r",
+							"// Set the new environment variable\r",
+							"pm.environment.set(\"authorization\", hash);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{endpoint}}?action=stopServer",
+					"host": [
+						"{{endpoint}}"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "stopServer"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Restart Server",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "aeb020ea-2ee3-4b1f-948a-83de17c77348",
+						"exec": [
+							"// Get the action from request parameter (must match what is in params)\r",
+							"var action = \"restartServer\";\r",
+							"\r",
+							"// Access your env variable to get secret\r",
+							"var secret = pm.environment.get(\"secret\");\r",
+							"\r",
+							"// Use the CryptoJS to calculate MD5\r",
+							"var hash = CryptoJS.MD5(secret + action).toString();\r",
+							"\r",
+							"// Set the new environment variable\r",
+							"pm.environment.set(\"authorization\", hash);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{endpoint}}?action=restartServer",
+					"host": [
+						"{{endpoint}}"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "restartServer"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Policies",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "aeb020ea-2ee3-4b1f-948a-83de17c77348",
+						"exec": [
+							"// Get the action from request parameter (must match what is in params)\r",
+							"var action = \"listPolicies\";\r",
+							"\r",
+							"// Access your env variable to get secret\r",
+							"var secret = pm.environment.get(\"secret\");\r",
+							"\r",
+							"// Use the CryptoJS to calculate MD5\r",
+							"var hash = CryptoJS.MD5(secret + action).toString();\r",
+							"\r",
+							"// Set the new environment variable\r",
+							"pm.environment.set(\"authorization\", hash);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{endpoint}}?action=listPolicies",
+					"host": [
+						"{{endpoint}}"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "listPolicies"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set Policy",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "aeb020ea-2ee3-4b1f-948a-83de17c77348",
+						"exec": [
+							"// Get the action from request parameter (must match what is in params)\r",
+							"var action = \"setPolicy\";\r",
+							"\r",
+							"// Access your env variable to get secret\r",
+							"var secret = pm.environment.get(\"secret\");\r",
+							"\r",
+							"// Use the CryptoJS to calculate MD5\r",
+							"var hash = CryptoJS.MD5(secret + action).toString();\r",
+							"\r",
+							"// Set the new environment variable\r",
+							"pm.environment.set(\"authorization\", hash);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{endpoint}}?action=setPolicy&accessKey=jcarlson&policy=readwrite",
+					"host": [
+						"{{endpoint}}"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "setPolicy"
+						},
+						{
+							"key": "accessKey",
+							"value": "jcarlson"
+						},
+						{
+							"key": "policy",
+							"value": "readwrite"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Details",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "aeb020ea-2ee3-4b1f-948a-83de17c77348",
+						"exec": [
+							"// Get the action from request parameter (must match what is in params)\r",
+							"var action = \"getUser\";\r",
+							"\r",
+							"// Access your env variable to get secret\r",
+							"var secret = pm.environment.get(\"secret\");\r",
+							"\r",
+							"// Use the CryptoJS to calculate MD5\r",
+							"var hash = CryptoJS.MD5(secret + action).toString();\r",
+							"\r",
+							"// Set the new environment variable\r",
+							"pm.environment.set(\"authorization\", hash);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{endpoint}}?action=getUser&accessKey=jcarlson",
+					"host": [
+						"{{endpoint}}"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "getUser"
+						},
+						{
+							"key": "accessKey",
+							"value": "jcarlson"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove User",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "306db58c-7d56-4005-b7e8-b6f73ea0e497",
+						"exec": [
+							"// Get the action from request parameter (must match what is in params)\r",
+							"var action = \"removeUser\";\r",
+							"\r",
+							"// Access your env variable to get secret\r",
+							"var secret = pm.environment.get(\"secret\");\r",
+							"\r",
+							"// Use the CryptoJS to calculate MD5\r",
+							"var hash = CryptoJS.MD5(secret + action).toString();\r",
+							"\r",
+							"// Set the new environment variable\r",
+							"pm.environment.set(\"authorization\", hash);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{endpoint}}?action=removeUser&accessKey=jcarlson",
+					"host": [
+						"{{endpoint}}"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "removeUser"
+						},
+						{
+							"key": "accessKey",
+							"value": "jcarlson"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
