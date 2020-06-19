@@ -7,6 +7,66 @@
 	},
 	"item": [
 		{
+			"name": "Add Server Keys",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "aeb020ea-2ee3-4b1f-948a-83de17c77348",
+						"exec": [
+							"// Get the action from request parameter (must match what is in params)\r",
+							"var action = \"addKeys\";\r",
+							"\r",
+							"// Access your env variable to get secret\r",
+							"var secret = pm.environment.get(\"secret\");\r",
+							"\r",
+							"// Use the CryptoJS to calculate MD5\r",
+							"var hash = CryptoJS.MD5(secret + action).toString();\r",
+							"\r",
+							"// Set the new environment variable\r",
+							"pm.environment.set(\"authorization\", hash);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{endpoint}}?action=addKeys&endpoint=http://0.0.0.0:9000&accessKey=yourAccessKey&secret=yourSecret",
+					"host": [
+						"{{endpoint}}"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "addKeys"
+						},
+						{
+							"key": "endpoint",
+							"value": "http://0.0.0.0:9000"
+						},
+						{
+							"key": "accessKey",
+							"value": "yourAccessKey"
+						},
+						{
+							"key": "secret",
+							"value": "yourSecret"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Add User",
 			"event": [
 				{
