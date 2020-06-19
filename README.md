@@ -16,7 +16,7 @@ Essentially, this wrapper is for PHP users. You can also run this as a fully fle
 
 ## Installation ##
 
-1. Run `git clone https://github.com/dominicklee/MinIO-Admin-for-PHP.git` into a directory of your choice, but not inside the MinIO directory. You can download this repo and extract the contents. Ideally both the MinIO directory and this wrapper's directory should **be in the same parent directory**. (For example, if you installed MinIO in `/www/html/minio/`, then this wrapper should be `/www/html/admin/`.
+1. Run `git clone https://github.com/dominicklee/MinIO-Admin-for-PHP.git` into a directory of your choice, but not inside the MinIO server directory. You can download this repo and extract the contents.
 
 2. Make sure your LAMP or WAMP server is effectively running and not in safe-mode. The wrapper will run shell commands as defined by your REST request. Therefore, it makes sense to keep this wrapper in a publicly accessible directory.
 
